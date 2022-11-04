@@ -1,0 +1,22 @@
+services:
+  database:
+    image: 'postgress'
+    volumes:
+      - db-data:/data
+    env_file:
+      - ./env/postgress.env
+
+  backend:
+    container_name: duffbeer-app
+    build: ./duffbeer/.
+    ports:
+      - '8080:8080'
+    volumes:
+      - db-data:/data
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - database
+
+volumes:
+  db-data:

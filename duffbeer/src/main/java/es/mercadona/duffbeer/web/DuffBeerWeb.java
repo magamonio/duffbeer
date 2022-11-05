@@ -1,14 +1,14 @@
 package es.mercadona.duffbeer.web;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import es.mercadona.duffbeer.model.Product;
-import es.mercadona.duffbeer.repository.ProductRepository;
 import es.mercadona.duffbeer.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
 public class DuffBeerWeb {
@@ -31,9 +31,39 @@ public class DuffBeerWeb {
         return productService.getProductoById(id);
     }
 
+    @GetMapping("/findBy")
+    public List<Product> getProductsByCategoria(@RequestBody Map<String, String> map){
+//        map.keySet().forEach(k -> );
+        List<Product> lista = null;
+        String key = map.keySet().stream().toArray()[0].toString();
+        if("marca".equals(key)){
+            lista = productService.getProductosByMarca(map.get(key));
+        }else if("categoria".equals(key)){
+            lista = productService.getProductosByCategoria(map.get(key));
+        }
+        return lista;
+    }
+
+
     @GetMapping("/list")
     public List<Product> listProducts(){
         return productService.getAllProductos();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable(value="id") Long id){
+        productService.deleteById(id);
+    }
+
+    @DeleteMapping("/deleteAll")
+    public void deleteById(@RequestBody Long... ids){
+        productService.deleteAll(Arrays.stream(ids).toList());
+    }
+
+    @DeleteMapping("/wipeAllData")
+    public String wipeAllData(){
+        productService.wipeAllData();
+        return "Se han eliminado todos los productos.";
     }
 
 }

@@ -33,15 +33,7 @@ public class DuffBeerWeb {
 
     @GetMapping("/findBy")
     public List<Product> getProductsByCategoria(@RequestBody Map<String, String> map){
-//        map.keySet().forEach(k -> );
-        List<Product> lista = null;
-        String key = map.keySet().stream().toArray()[0].toString();
-        if("marca".equals(key)){
-            lista = productService.getProductosByMarca(map.get(key));
-        }else if("categoria".equals(key)){
-            lista = productService.getProductosByCategoria(map.get(key));
-        }
-        return lista;
+        return productService.getProductosBy(map);
     }
 
 

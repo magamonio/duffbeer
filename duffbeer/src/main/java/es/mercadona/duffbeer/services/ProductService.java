@@ -3,9 +3,12 @@ package es.mercadona.duffbeer.services;
 import es.mercadona.duffbeer.model.Product;
 import es.mercadona.duffbeer.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class ProductService {
@@ -25,14 +28,6 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> getProductosByCategoria(String categoria) {
-        return productRepository.findByCategoria(categoria);
-    }
-
-    public List<Product> getProductosByMarca(String marca) {
-        return productRepository.findByMarca(marca);
-    }
-
     public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
@@ -44,4 +39,11 @@ public class ProductService {
         productRepository.deleteAll();
     }
 
+    public List<Product> getProductosBy(Map<String, String> map) {
+        Product p = new Product();
+        p.setCategoria(map.get("categoria"));
+        p.setMarca(map.get("marca"));
+        Sort sort = Sort.by(Sort.Order.desc("categoria"), Sort.Order.desc("marca"), Sort.Order.asc("id"));
+        return productRepository.findAll(Example.of(p), sort);
+    }
 }

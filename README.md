@@ -4,6 +4,9 @@
 
 ###### Arranque de la aplicación
 ```
+cd ./duffbear
+./mvnw clean package -DskipTests
+cd ..
 docker-compose build
 docker-compose up
 ```

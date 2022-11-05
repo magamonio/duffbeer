@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "25f8a922-092d-43d4-b8f9-d0ebe7c6e7c5",
+		"name": "DuffBeer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Esp. 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"seccion\" : { \"name\" : \"Bodega\"},\r\n        \"price\" : 1.25,\r\n        \"provider\" : [{\r\n                \"name\" : \"Proveedor 1\",\r\n                \"telefono\" : \"+34 666 77 88\"\r\n            }]\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/add",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Productos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Especial 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"categoria\" : \"Bodega\",\r\n        \"price\" : 1.25\r\n    },\r\n    {\r\n        \"name\" : \"Papas\",\r\n        \"marca\" : \"Lays\",\r\n        \"categoria\" : \"Snacks\",\r\n        \"price\" : 1.5\r\n    },\r\n    {\r\n        \"name\" : \"Aceitunas\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Snacks\",\r\n        \"price\" : 0.75\r\n    },\r\n     {\r\n        \"name\" : \"Vermut\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Bodega\",\r\n        \"price\" : 3.5\r\n    },\r\n    {\r\n        \"name\" : \"Aceite 3L\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Essenciales\",\r\n        \"price\" : 12.5\r\n    },\r\n    {\r\n        \"name\" : \"Papel Higienico 24 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"categoria\" : \"Higiene\",\r\n        \"price\" : 6\r\n    },\r\n    {\r\n        \"name\" : \"Papel Higienico 12 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"categoria\" : \"Higiene\",\r\n        \"price\" : 3.5\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/add",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[2,3]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/deleteAll",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"deleteAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wipe All Data",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/wipeAllData",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"wipeAllData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Producto",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/list",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindBy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"marca\": \"Hacendado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/findBy",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"findBy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

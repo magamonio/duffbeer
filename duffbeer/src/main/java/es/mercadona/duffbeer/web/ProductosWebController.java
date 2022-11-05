@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class ProductosWebController {
@@ -35,7 +34,6 @@ public class ProductosWebController {
         return productService.getProductosBy(product);
     }
 
-
     @GetMapping("/list")
     public List<Product> listProducts(){
         return productService.getAllProductos();
@@ -56,5 +54,6 @@ public class ProductosWebController {
         productService.wipeAllData();
         return "Se han eliminado todos los productos.";
     }
+
 
 }

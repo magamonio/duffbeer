@@ -1,7 +1,10 @@
 package es.mercadona.duffbeer.services;
 
 import es.mercadona.duffbeer.model.Product;
+import es.mercadona.duffbeer.model.Seccion;
 import es.mercadona.duffbeer.repository.ProductRepository;
+import es.mercadona.duffbeer.repository.ProviderRepository;
+import es.mercadona.duffbeer.repository.SeccionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
@@ -15,6 +18,12 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private SeccionesRepository seccionesRepository;
+
+    @Autowired
+    private ProviderRepository providerRepository;
 
     public List<Product> saveProducts(List<Product> products){
         return productRepository.saveAll(products);
@@ -39,11 +48,8 @@ public class ProductService {
         productRepository.deleteAll();
     }
 
-    public List<Product> getProductosBy(Map<String, String> map) {
-        Product p = new Product();
-        p.setCategoria(map.get("categoria"));
-        p.setMarca(map.get("marca"));
-        Sort sort = Sort.by(Sort.Order.desc("categoria"), Sort.Order.desc("marca"), Sort.Order.asc("id"));
-        return productRepository.findAll(Example.of(p), sort);
+    public List<Product> getProductosBy(Product product) {
+        Sort sort = Sort.by(Sort.Order.desc("seccion"), Sort.Order.desc("marca"), Sort.Order.asc("id"));
+        return productRepository.findAll(Example.of(product), sort);
     }
 }

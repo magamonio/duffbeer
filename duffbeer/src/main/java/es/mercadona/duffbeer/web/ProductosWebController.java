@@ -1,6 +1,5 @@
 package es.mercadona.duffbeer.web;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import es.mercadona.duffbeer.model.Product;
 import es.mercadona.duffbeer.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class DuffBeerWeb {
+public class ProductosWebController {
 
     @Autowired
     private ProductService productService;
 
     @GetMapping("/welcome")
     public String welcome() {
-        return "DuffBeer Api para el control de productos";
+        return "Productos Api para el control de productos";
     }
 
     @PostMapping("/add")
@@ -32,8 +31,8 @@ public class DuffBeerWeb {
     }
 
     @GetMapping("/findBy")
-    public List<Product> getProductsByCategoria(@RequestBody Map<String, String> map){
-        return productService.getProductosBy(map);
+    public List<Product> findProductsBy(@RequestBody Product product){
+        return productService.getProductosBy(product);
     }
 
 

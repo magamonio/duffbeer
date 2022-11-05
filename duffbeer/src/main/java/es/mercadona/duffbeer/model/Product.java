@@ -9,6 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -33,13 +35,28 @@ public class Product {
 
     @Getter
     @Setter
-    @Column(name = "categoria")
-    private String categoria;
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinColumn(name = "seccion_id")
+    private Seccion seccion;
 
     @Getter
     @Setter
     @Column(name = "price", nullable = false)
     private Double price;
+
+    @Getter
+    @Setter
+    @ManyToMany(cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "product_provider",
+            joinColumns = { @JoinColumn(name = "product_id") },
+            inverseJoinColumns = { @JoinColumn(name = "provider_id") })
+    private List<Proveedor> providers;
 
     @Getter
     @Setter
@@ -57,7 +74,5 @@ public class Product {
     public String toString(){
         return String.format("%d: %s, %s\t%d", id, name, marca, price);
     }
-
-
 
 }

@@ -2,6 +2,7 @@ package es.mercadona.duffbeer.web;
 
 import es.mercadona.duffbeer.model.Product;
 import es.mercadona.duffbeer.repository.ProductRepository;
+import es.mercadona.duffbeer.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 public class DuffBeerWeb {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     @GetMapping("/welcome")
     public String welcome() {
@@ -21,18 +22,18 @@ public class DuffBeerWeb {
     }
 
     @PostMapping("/add")
-    public List<Product> addProduct(@RequestBody Product... products){
-        return productRepository.saveAll(Arrays.stream(products).toList());
+    public List<Product> addProducts(@RequestBody Product... products){
+        return productService.saveProducts(Arrays.stream(products).toList());
     }
 
     @GetMapping("/get/{id}")
-    public Product addProduct(@PathVariable(value="id") Long id){
-        return productRepository.findById(id).get();
+    public Product getProductById(@PathVariable(value="id") Long id){
+        return productService.getProductoById(id);
     }
 
     @GetMapping("/list")
-    public List<Product> addProduct(){
-        return productRepository.findAll();
+    public List<Product> listProducts(){
+        return productService.getAllProductos();
     }
 
 }

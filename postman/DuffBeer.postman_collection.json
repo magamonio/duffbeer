@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Esp. 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"seccion\" : { \"name\" : \"Bodega\"},\r\n        \"price\" : 1.25,\r\n        \"provider\" : [{\r\n                \"name\" : \"Proveedor 1\",\r\n                \"telefono\" : \"+34 666 77 88\"\r\n            }]\r\n    }\r\n]",
+					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Esp. 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"seccion\" : { \"name\" : \"Bodega\"},\r\n        \"price\" : \"1.25\",\r\n        \"providers\" : [{\r\n                \"name\" : \"Bodegas Pantomima\",\r\n                \"telefono\" : \"+34 666 778 899\"\r\n            }]\r\n    },\r\n    {\r\n        \"name\" : \"Papas\",\r\n        \"marca\" : \"Lays\",\r\n        \"seccion\" : { \"name\" : \"Snacks\"},\r\n        \"price\" : 1.5,\r\n        \"providers\" : [{\r\n            \"name\" : \"PepsiCo\",\r\n            \"telefono\" : \"+34 666 778 899\"\r\n        }]\r\n    },\r\n    {\r\n        \"name\" : \"Aceitunas\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"seccion\" : { \"name\" : \"Snacks\"},\r\n        \"price\" : 0.75,\r\n         \"providers\" : [{\r\n                \"name\" : \"Hacendado\",\r\n                \"telefono\" : \"+34 111 222 333\"\r\n            }]\r\n    },\r\n    {\r\n        \"name\" : \"Vermut\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"seccion\" : { \"name\" : \"Bodega\"},\r\n        \"price\" : 3.5,\r\n         \"providers\" : [{ \r\n                \"name\" : \"Hacendado\",\r\n                \"telefono\" : \"+34 111 222 333\"\r\n            }]\r\n    },\r\n    {\r\n        \"name\" : \"Aceite 3L\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"seccion\" : { \"name\" : \"Essenciales\"},\r\n        \"price\" : 12.5,\r\n         \"providers\" : [{\r\n                \"name\" : \"Hacendado\",\r\n                \"telefono\" : \"+34 111 222 333\"\r\n            }]\r\n    },\r\n    {\r\n        \"name\" : \"Papel Higienico 24 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"seccion\" : { \"name\" : \"Higiene\"},\r\n        \"price\" : 6,\r\n        \"providers\" : [{\r\n                \"name\" : \"Hacendado\",\r\n                \"telefono\" : \"+34 111 222 333\"\r\n        }]\r\n    },     \r\n    {\r\n        \"name\" : \"Papel Higienico 12 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"seccion\" : { \"name\" : \"Higiene\"},\r\n        \"price\" : 3.5,\r\n         \"providers\" : [{\r\n                \"name\" : \"Hacendado\",\r\n                \"telefono\" : \"+34 111 222 333\"\r\n            }]\r\n    }\r\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Especial 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"categoria\" : \"Bodega\",\r\n        \"price\" : 1.25\r\n    },\r\n    {\r\n        \"name\" : \"Papas\",\r\n        \"marca\" : \"Lays\",\r\n        \"categoria\" : \"Snacks\",\r\n        \"price\" : 1.5\r\n    },\r\n    {\r\n        \"name\" : \"Aceitunas\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Snacks\",\r\n        \"price\" : 0.75\r\n    },\r\n     {\r\n        \"name\" : \"Vermut\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Bodega\",\r\n        \"price\" : 3.5\r\n    },\r\n    {\r\n        \"name\" : \"Aceite 3L\",\r\n        \"marca\" : \"Hacendado\",\r\n        \"categoria\" : \"Essenciales\",\r\n        \"price\" : 12.5\r\n    },\r\n    {\r\n        \"name\" : \"Papel Higienico 24 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"categoria\" : \"Higiene\",\r\n        \"price\" : 6\r\n    },\r\n    {\r\n        \"name\" : \"Papel Higienico 12 rollos\",\r\n        \"marca\" : \"Bosque Verde\",\r\n        \"categoria\" : \"Higiene\",\r\n        \"price\" : 3.5\r\n    }\r\n]",
+					"raw": "[ \r\n    {\r\n        \"name\" : \"Alhambra Esp. 1925\",\r\n        \"marca\" : \"Alhambra\",\r\n        \"seccion\" : { \"name\" : \"Bodega\"},\r\n        \"price\" : \"1.25\",\r\n        \"providers\" : [{\r\n                \"id\": 1,\r\n                \"name\" : \"Bodegas Pantomima\",\r\n                \"telefono\" : \"+34 666 778 899\"\r\n            }, {\r\n                \"name\" : \"Alhambra \",\r\n                \"telefono\" : \"+34 123 123 123\"\r\n            }]\r\n    }\r\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,7 +165,22 @@
 			"name": "Get Producto",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost.gva.es:8080/duffbeer/get/2",
+					"protocol": "http",
+					"host": [
+						"localhost",
+						"gva",
+						"es"
+					],
+					"port": "8080",
+					"path": [
+						"duffbeer",
+						"get",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
@@ -201,7 +216,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"marca\": \"Hacendado\"\r\n}",
+					"raw": "{\r\n    \"marca\": \"Alhambra\",\r\n    \"seccion\": {\"name\":\"Bodega\"}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

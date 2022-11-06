@@ -12,4 +12,4 @@ docker-compose up
 ```
 
 ###### Mestra de datos
-Importar el fichero DuffBeer.postman_collection.json desde la aplicación Postman
+Importar el fichero `DuffBeer.postman_collection.json` desde la aplicación Postman
